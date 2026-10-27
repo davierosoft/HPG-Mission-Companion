@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HPG Mission Companion voice pack FR. Edit the texts freely; raise version="" at every change (see docs/architecture/VOICEPACKS.md). -->
-<voicepack name="FR" language="FR" version="22" vcp="APP" title="Voix françaises de l'équipage des missions HEMS" basever="33">
+<voicepack name="FR" language="FR" version="24" vcp="APP" title="Voix françaises de l'équipage des missions HEMS" basever="35">
   <names>
     <name role="PLT">Pilote</name>
     <name role="CPL">Copilote</name>
@@ -7281,12 +7281,12 @@
       <o>Recherche sur itinéraire : passes le long de la route, espacées de {0} mètres, et on regarde des deux côtés.</o>
     </message>
     <message key="SAR.CLK" actor="4" radio="auto" group="sarbrf" seq="5" new="1" trigger="briefing of a search and rescue mission: the sides of the crew and the clock positions">
-      <o>Répartition des regards : je prends le côté gauche, le copilote le côté droit, le commandant regarde devant. Annoncez tout en position horaire.</o>
-      <o>Chacun a son côté : la gauche pour moi, la droite pour le copilote, devant pour le commandant. On annonce les positions comme sur une horloge.</o>
-      <o>Le côté gauche est pour moi, le côté droit pour le copilote, et on dit où on voit les choses comme sur une horloge : midi, c'est devant.</o>
-      <o>Positions horaires, l'équipe : midi, c'est le nez. Je surveille la gauche, le copilote la droite.</o>
-      <o>Je couvre la gauche, le copilote couvre la droite, et chaque observation est annoncée en position horaire.</o>
-      <o>On se partage la vue : gauche, droite, devant. Toute observation est annoncée avec sa position horaire.</o>
+      <o>Répartition des regards : je prends le côté droit, le copilote le côté gauche, le commandant regarde devant. Annoncez tout en position horaire.</o>
+      <o>Chacun a son côté : la droite pour moi, la gauche pour le copilote, devant pour le commandant. On annonce les positions comme sur une horloge.</o>
+      <o>Le côté droit est pour moi, le côté gauche pour le copilote, et on dit où on voit les choses comme sur une horloge : midi, c'est devant.</o>
+      <o>Positions horaires, l'équipe : midi, c'est le nez. Je surveille la droite, le copilote la gauche.</o>
+      <o>Je couvre la droite, le copilote couvre la gauche, et chaque observation est annoncée en position horaire.</o>
+      <o>On se partage la vue : droite, gauche, devant. Toute observation est annoncée avec sa position horaire.</o>
     </message>
     <message key="SAR.OPT" actor="2" radio="auto" group="sarbrf" seq="6" new="1" trigger="briefing of a search and rescue mission: the best altitude and speed (arguments 0 = feet above the ground, 1 = knots, 2 = the spotting range in meters)">
       <o>Recherche optimale : environ {0} pieds sol et {1} noeuds ou moins. Au mieux, on repère une personne jusqu'à {2} mètres ; plus bas, plus haut ou plus vite, cette portée diminue.</o>
@@ -7959,6 +7959,22 @@
       <o>{@HEMS}, ici la régulation. Compris, position enregistrée. Signalez l'état de la personne dès que possible.</o>
       <o>{@HEMS}, ici la régulation. Parfait, position reçue. J'alerte l'ambulance pour le trajet vers l'hôpital.</o>
       <o>{@HEMS}, ici la régulation. Bien reçu, position {0} degrés {mins:1} {comp:2}, {3} degrés {mins:4} {comp:5}. Poursuivez votre évaluation.</o>
+    </message>
+    <message key="SAR.FLS" actor="4" radio="auto" group="sarf" seq="3" new="1" trigger="search and rescue: the operator reports something at a clock position and a distance in meters (args: clock hour, meters); a false sighting, answered later by SAR.FLN">
+      <o>Quelque chose à {0} heures, environ {1} mètres. Ce pourrait être notre cible.</o>
+      <o>J'ai peut-être quelque chose, {0} heures, à environ {1} mètres.</o>
+      <o>Observation possible à {0} heures, à peu près {1} mètres.</o>
+      <o>Regardez à {0} heures, {1} mètres. Je vois quelque chose là-bas.</o>
+      <o>J'ai un point à {0} heures, environ {1} mètres. Allons voir de plus près.</o>
+      <o>Contact, {0} heures, {1} mètres. Ce pourrait être la personne.</o>
+    </message>
+    <message key="SAR.FLN" actor="4" radio="auto" group="sarf" seq="4" new="1" trigger="search and rescue: the operator says that the false sighting is not the target (a random 20 to 75 s later, or when the helicopter is within 150 m of the point)">
+      <o>Négatif, ce n'est pas notre cible. On continue la recherche.</o>
+      <o>Ce n'est pas la cible, fausse alerte. Retour à la recherche.</o>
+      <o>Fausse alerte, ce n'est pas ce que nous cherchons. On poursuit la recherche.</o>
+      <o>Non, pas la cible. On continue les recherches.</o>
+      <o>Ce n'était rien, pas notre personne. On continue à chercher.</o>
+      <o>Contact négatif sur celui-là, ce n'est pas la cible. On cherche encore.</o>
     </message>
     <message key="HOS.MAR.P" actor="2" radio="ext" group="hosm" seq="1" prio="2" age="90" new="1" trigger="the hospital marshal is expected: the copilot asks the hospital to send him to the helipad">
       <o>Hôpital, ici {@HEMS}. Nous demandons le placeur sur l'hélisurface, s'il vous plaît.</o>

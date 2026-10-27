@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HPG Mission Companion voice pack EN. Edit the texts freely; raise version="" at every change (see docs/architecture/VOICEPACKS.md). -->
-<voicepack name="EN" language="EN" version="33" vcp="APP" title="English crew voices of the HEMS missions">
+<voicepack name="EN" language="EN" version="35" vcp="APP" title="English crew voices of the HEMS missions">
   <names>
     <name role="PLT">Pilot</name>
     <name role="CPL">Copilot</name>
@@ -7281,12 +7281,12 @@
       <o>Route search: legs along the road, {0} meters apart, and we look at both sides.</o>
     </message>
     <message key="SAR.CLK" actor="4" radio="auto" group="sarbrf" seq="5" new="1" trigger="briefing of a search and rescue mission: the sides of the crew and the clock positions">
-      <o>Eyes: I take the left side, the copilot the right side, the captain looks ahead. Call everything by clock position.</o>
-      <o>Everybody has a side: left for me, right for the copilot, ahead for the captain. We call positions as on a clock.</o>
-      <o>Left side is mine, right side is the copilot's, and we say where we see it like a clock: twelve is ahead.</o>
-      <o>Clock positions, crew: twelve is the nose. I watch the left, the copilot the right.</o>
-      <o>I cover left, the copilot covers right, and every sighting is called by clock position.</o>
-      <o>We split the view: left, right, ahead. Any sighting goes out with its clock position.</o>
+      <o>Eyes: I take the right side, the copilot the left side, the captain looks ahead. Call everything by clock position.</o>
+      <o>Everybody has a side: right for me, left for the copilot, ahead for the captain. We call positions as on a clock.</o>
+      <o>Right side is mine, left side is the copilot's, and we say where we see it like a clock: twelve is ahead.</o>
+      <o>Clock positions, crew: twelve is the nose. I watch the right, the copilot the left.</o>
+      <o>I cover right, the copilot covers left, and every sighting is called by clock position.</o>
+      <o>We split the view: right, left, ahead. Any sighting goes out with its clock position.</o>
     </message>
     <message key="SAR.OPT" actor="2" radio="auto" group="sarbrf" seq="6" new="1" trigger="briefing of a search and rescue mission: the best altitude and speed (arguments 0 = feet above the ground, 1 = knots, 2 = the spotting range in meters)">
       <o>Best search: about {0} feet above the ground and {1} knots or less. At the best we spot a person at up to {2} meters; lower, higher or faster and that range gets shorter.</o>
@@ -7959,6 +7959,22 @@
       <o>{@HEMS}, dispatch. Understood, position logged. Report the condition of the person as soon as you can.</o>
       <o>{@HEMS}, dispatch. Great, copy the position. I alert the ambulance for the hospital leg.</o>
       <o>{@HEMS}, dispatch. Received, position {0} degrees {mins:1} {comp:2}, {3} degrees {mins:4} {comp:5}. Proceed with your assessment.</o>
+    </message>
+    <message key="SAR.FLS" actor="4" radio="auto" group="sarf" seq="3" new="1" trigger="search and rescue: the operator reports something at a clock position and a distance in meters (args: clock hour, meters); a false sighting, answered later by SAR.FLN">
+      <o>Something at {0} o'clock, around {1} meters. Could be our target.</o>
+      <o>I might have something, {0} o'clock, about {1} meters out.</o>
+      <o>Possible sighting at {0} o'clock, roughly {1} meters.</o>
+      <o>Check {0} o'clock, {1} meters. I see something there.</o>
+      <o>Eyes on something at {0} o'clock, about {1} meters. Let us take a closer look.</o>
+      <o>Contact, {0} o'clock, {1} meters. It could be the person.</o>
+    </message>
+    <message key="SAR.FLN" actor="4" radio="auto" group="sarf" seq="4" new="1" trigger="search and rescue: the operator says that the false sighting is not the target (a random 20 to 75 s later, or when the helicopter is within 150 m of the point)">
+      <o>Negative, that is not our target. Keep searching.</o>
+      <o>It is not the target, just a false alarm. Back to the search.</o>
+      <o>False alarm, that is not what we are looking for. We continue the search.</o>
+      <o>No, not the target. Let us go on with the search.</o>
+      <o>That was nothing, not our person. Keep looking.</o>
+      <o>Negative contact on that one, it is not the target. We search on.</o>
     </message>
     <message key="HOS.MAR.P" actor="2" radio="ext" group="hosm" seq="1" prio="2" age="90" new="1" trigger="the hospital marshal is expected: the copilot asks the hospital to send him to the helipad">
       <o>Hospital, {@HEMS}. We request the marshal on the helipad, please.</o>

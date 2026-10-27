@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HPG Mission Companion voice pack EN. Edit the texts freely; raise version="" at every change (see docs/architecture/VOICEPACKS.md). -->
-<voicepack name="DE" language="DE" version="21" basever="33" vcp="APP" title="German crew voices of the HEMS missions">
+<voicepack name="DE" language="DE" version="23" basever="35" vcp="APP" title="German crew voices of the HEMS missions">
   <names>
     <name role="PLT">Pilot</name>
     <name role="CPL">Copilot</name>
@@ -7282,12 +7282,12 @@
       <o>Streckensuche: Bahnen entlang der Straße, {0} Meter auseinander, und wir schauen auf beide Seiten.</o>
     </message>
     <message key="SAR.CLK" actor="4" radio="auto" group="sarbrf" seq="5" new="1" trigger="briefing of a search and rescue mission: the sides of the crew and the clock positions">
-      <o>Augen: Ich nehme die linke Seite, der Copilot die rechte, der Kapitän schaut nach vorn. Alles wird nach Uhrzeit gemeldet.</o>
-      <o>Jeder hat eine Seite: links ich, rechts der Copilot, voraus der Kapitän. Wir melden Positionen wie auf einer Uhr.</o>
-      <o>Die linke Seite ist meine, die rechte die des Copiloten, und wir sagen, wo wir etwas sehen, wie auf einer Uhr: zwölf Uhr ist voraus.</o>
-      <o>Uhrzeiten: Zwölf Uhr ist die Nase. Ich beobachte links, der Copilot rechts.</o>
-      <o>Ich decke links ab, der Copilot rechts, und jede Sichtung wird mit der Uhrzeit gemeldet.</o>
-      <o>Wir teilen den Blick: links, rechts, voraus. Jede Sichtung geht mit ihrer Uhrzeit raus.</o>
+      <o>Augen: Ich nehme die rechte Seite, der Copilot die linke, der Kapitän schaut nach vorn. Alles wird nach Uhrzeit gemeldet.</o>
+      <o>Jeder hat eine Seite: rechts ich, links der Copilot, voraus der Kapitän. Wir melden Positionen wie auf einer Uhr.</o>
+      <o>Die rechte Seite ist meine, die linke die des Copiloten, und wir sagen, wo wir etwas sehen, wie auf einer Uhr: zwölf Uhr ist voraus.</o>
+      <o>Uhrzeiten: Zwölf Uhr ist die Nase. Ich beobachte rechts, der Copilot links.</o>
+      <o>Ich decke rechts ab, der Copilot links, und jede Sichtung wird mit der Uhrzeit gemeldet.</o>
+      <o>Wir teilen den Blick: rechts, links, voraus. Jede Sichtung geht mit ihrer Uhrzeit raus.</o>
     </message>
     <message key="SAR.OPT" actor="2" radio="auto" group="sarbrf" seq="6" new="1" trigger="briefing of a search and rescue mission: the best altitude and speed (arguments 0 = feet above the ground, 1 = knots, 2 = the spotting range in meters)">
       <o>Beste Suche: etwa {0} Fuß über Grund und {1} Knoten oder weniger. Im besten Fall sehen wir eine Person bis auf {2} Meter; tiefer, höher oder schneller wird diese Reichweite kürzer.</o>
@@ -7960,6 +7960,22 @@
       <o>{@HEMS}, Leitstelle. Verstanden, Position notiert. Meldet den Zustand der Person, sobald ihr könnt.</o>
       <o>{@HEMS}, Leitstelle. Sehr gut, Position verstanden. Ich alarmiere den Rettungswagen für den Weg ins Krankenhaus.</o>
       <o>{@HEMS}, Leitstelle. Erhalten, Position {0} Grad {mins:1} {comp:2}, {3} Grad {mins:4} {comp:5}. Fahrt mit eurer Einschätzung fort.</o>
+    </message>
+    <message key="SAR.FLS" actor="4" radio="auto" group="sarf" seq="3" new="1" trigger="search and rescue: the operator reports something at a clock position and a distance in meters (args: clock hour, meters); a false sighting, answered later by SAR.FLN">
+      <o>Da ist etwas auf {0} Uhr, etwa {1} Meter. Könnte unser Ziel sein.</o>
+      <o>Ich habe vielleicht etwas, {0} Uhr, ungefähr {1} Meter entfernt.</o>
+      <o>Mögliche Sichtung auf {0} Uhr, rund {1} Meter.</o>
+      <o>Schau auf {0} Uhr, {1} Meter. Dort sehe ich etwas.</o>
+      <o>Ich sehe etwas auf {0} Uhr, etwa {1} Meter. Sehen wir es uns genauer an.</o>
+      <o>Kontakt, {0} Uhr, {1} Meter. Es könnte die Person sein.</o>
+    </message>
+    <message key="SAR.FLN" actor="4" radio="auto" group="sarf" seq="4" new="1" trigger="search and rescue: the operator says that the false sighting is not the target (a random 20 to 75 s later, or when the helicopter is within 150 m of the point)">
+      <o>Negativ, das ist nicht unser Ziel. Wir suchen weiter.</o>
+      <o>Es ist nicht das Ziel, nur ein Fehlalarm. Zurück zur Suche.</o>
+      <o>Fehlalarm, das ist nicht, was wir suchen. Wir setzen die Suche fort.</o>
+      <o>Nein, nicht das Ziel. Weiter mit der Suche.</o>
+      <o>Das war nichts, nicht unsere Person. Weitersuchen.</o>
+      <o>Negativ bei diesem Kontakt, es ist nicht das Ziel. Wir suchen weiter.</o>
     </message>
     <message key="HOS.MAR.P" actor="2" radio="ext" group="hosm" seq="1" prio="2" age="90" new="1" trigger="the hospital marshal is expected: the copilot asks the hospital to send him to the helipad">
       <o>Bodenpersonal, {@HEMS}. Wir bitten um den Einweiser am Helikopterlandeplatz.</o>
