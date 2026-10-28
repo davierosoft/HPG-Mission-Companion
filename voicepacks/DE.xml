@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HPG Mission Companion voice pack EN. Edit the texts freely; raise version="" at every change (see docs/architecture/VOICEPACKS.md). -->
-<voicepack name="DE" language="DE" version="23" basever="35" vcp="APP" title="German crew voices of the HEMS missions">
+<voicepack name="DE" language="DE" version="24" basever="36" vcp="APP" title="German crew voices of the HEMS missions">
   <names>
     <name role="PLT">Pilot</name>
     <name role="CPL">Copilot</name>
@@ -6464,6 +6464,30 @@
       <o>Patient erreicht. Kritisch, ich behandle ihn jetzt.</o>
       <o>Beim Patienten, allerhöchste Eile geboten: Kritisch, Behandlung läuft.</o>
     </message>
+    <message key="HST.SOON.S" actor="3" radio="auto" group="hstsoon" seq="1" new="1" trigger="hoist and skid operations: the doctor is nearly done with a stable patient and the crew starts to prepare him for the transport">
+      <o>Gleich fertig hier. Er ist stabil, wir machen ihn transportfertig.</o>
+      <o>Fast fertig. Stabiler Patient, wir bereiten ihn für den Transport vor.</o>
+      <o>Die Versorgung ist bald abgeschlossen. Wir machen den Patienten für den Flug fertig.</o>
+      <o>Wir schließen ab. Er ist stabil, wird transportfertig gemacht.</o>
+      <o>Ein paar Minuten noch, dann ist er bereit. Wir bereiten den Transport vor.</o>
+      <o>Fast geschafft. Stabil, wir packen ihn für den Transport ein.</o>
+    </message>
+    <message key="HST.SOON.M" actor="3" radio="auto" group="hstsoon" seq="1" new="1" trigger="hoist and skid operations: the doctor is nearly done with a serious patient and the crew starts to prepare him for the transport">
+      <o>Gleich fertig hier. Er ist ernst, aber hält durch, wir machen ihn transportfertig.</o>
+      <o>Fast fertig. Ernster Patient, wir bereiten ihn für den Transport vor.</o>
+      <o>Die Versorgung ist bald abgeschlossen. Wir machen ihn für den Flug fertig.</o>
+      <o>Wir schließen ab. Weiterhin ernst, wird transportfertig gemacht.</o>
+      <o>Ein paar Minuten noch. Wir bereiten den ernsten Patienten für den Transport vor.</o>
+      <o>Fast geschafft. Ernst, aber stabil genug, wir packen ihn ein.</o>
+    </message>
+    <message key="HST.SOON.C" actor="3" radio="auto" group="hstsoon" seq="1" new="1" trigger="hoist and skid operations: the doctor is nearly done with a critical patient and the crew starts to prepare him for the transport">
+      <o>Gleich fertig. Er ist kritisch, wir machen ihn jetzt transportfertig.</o>
+      <o>Fast fertig. Kritischer Patient, wir bereiten ihn sofort für den Transport vor.</o>
+      <o>Die Versorgung ist gleich abgeschlossen. Haltet euch bereit, wir fliegen schnell los.</o>
+      <o>Wir schließen ab. Er ist kritisch, wird transportfertig gemacht.</o>
+      <o>Nur einen Moment noch. Kritisch, wir bereiten den Transport jetzt vor.</o>
+      <o>Fast geschafft. Kritischer Patient, wir packen ihn ein und los.</o>
+    </message>
     <message key="HST.DONE.S" actor="3" radio="auto" group="hstdone" seq="1" new="1" trigger="hoist operation: the doctor finishes the visit of a stable patient">
       <o>Untersuchung abgeschlossen. Patient ist stabil, bereit für den Transport.</o>
       <o>Untersuchung beendet. Er ist stabil, wir können ihn einfliegen.</o>
@@ -6495,6 +6519,14 @@
       <o>Gehe runter zur Einsatzstelle. Ich sichere zuerst den Bereich ab.</o>
       <o>Bergretter verlässt die Kabine, ich übernehme die Einsatzstelle.</o>
       <o>Ich fahre runter und bereite alles vor.</o>
+    </message>
+    <message key="HRS.START.G" actor="12" radio="on" group="hrs" seq="1" new="1" trigger="skid landing: the heli rescuer leaves the cabin on foot to secure the area (no hoist)">
+      <o>Heli-Rescuer aus der Kabine, ich gehe den Bereich ab und sichere ihn.</o>
+      <o>Heli-Rescuer am Boden, ich prüfe den Bereich zu Fuß.</o>
+      <o>Raus aus dem Hubschrauber. Ich gehe die Szene ab und sichere sie.</o>
+      <o>Verlasse jetzt die Kufe, ich sichere zuerst den Bereich.</o>
+      <o>Heli-Rescuer draußen. Ich kümmere mich um die Szene, haltet die Position.</o>
+      <o>Zu Fuß unterwegs, ich sichere die Szene für die Crew.</o>
     </message>
     <message key="HRS.MID" actor="12" radio="on" group="hrs" seq="2" new="1" trigger="the heli rescuer is half way down">
       <o>Halber Weg, der Bereich unten sieht frei aus.</o>

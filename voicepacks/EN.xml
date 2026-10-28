@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HPG Mission Companion voice pack EN. Edit the texts freely; raise version="" at every change (see docs/architecture/VOICEPACKS.md). -->
-<voicepack name="EN" language="EN" version="35" vcp="APP" title="English crew voices of the HEMS missions">
+<voicepack name="EN" language="EN" version="36" vcp="APP" title="English crew voices of the HEMS missions">
   <names>
     <name role="PLT">Pilot</name>
     <name role="CPL">Copilot</name>
@@ -6463,6 +6463,30 @@
       <o>Reached the patient. Critical, I am treating him now.</o>
       <o>At the patient, and it is critical. Treatment starts right now.</o>
     </message>
+    <message key="HST.SOON.S" actor="3" radio="auto" group="hstsoon" seq="1" new="1" trigger="hoist and skid operations: the doctor is nearly done with a stable patient and the crew starts to prepare him for the transport">
+      <o>Nearly done here. He is stable, we start to prepare him for the transport.</o>
+      <o>Almost finished. Stable patient, we get him ready to move.</o>
+      <o>Treatment will be done soon. We prepare the patient for the ride.</o>
+      <o>Wrapping up. He is stable, getting him ready for transport.</o>
+      <o>A few minutes more and he is ready. We prepare the transport.</o>
+      <o>Nearly there. Stable, we start packing him up for the transport.</o>
+    </message>
+    <message key="HST.SOON.M" actor="3" radio="auto" group="hstsoon" seq="1" new="1" trigger="hoist and skid operations: the doctor is nearly done with a serious patient and the crew starts to prepare him for the transport">
+      <o>Nearly done here. He is serious but holding, we prepare him for the transport.</o>
+      <o>Almost finished. Serious patient, we get him ready to move.</o>
+      <o>Treatment will be done soon. We prepare him for the ride.</o>
+      <o>Wrapping up. Still serious, getting him ready for transport.</o>
+      <o>A few minutes more. We prepare the serious patient for the transport.</o>
+      <o>Nearly there. Serious but stable enough, we start packing him up.</o>
+    </message>
+    <message key="HST.SOON.C" actor="3" radio="auto" group="hstsoon" seq="1" new="1" trigger="hoist and skid operations: the doctor is nearly done with a critical patient and the crew starts to prepare him for the transport">
+      <o>Nearly done. He is critical, we prepare him for the transport right now.</o>
+      <o>Almost finished. Critical patient, we get him ready to move at once.</o>
+      <o>Treatment will be done in a moment. Be ready, we leave fast.</o>
+      <o>Wrapping up. He is critical, getting him ready for transport.</o>
+      <o>Just a moment more. Critical, we prepare the transport now.</o>
+      <o>Nearly there. Critical patient, we pack him up and we go.</o>
+    </message>
     <message key="HST.DONE.S" actor="3" radio="auto" group="hstdone" seq="1" new="1" trigger="hoist operation: the doctor finishes the visit of a stable patient">
       <o>Assessment complete. The patient is stable, ready for the transport.</o>
       <o>Assessment done. He is stable, we can move him.</o>
@@ -6494,6 +6518,14 @@
       <o>Going down to the scene. I will secure the area first.</o>
       <o>Heli rescuer leaving the cabin, I take care of the scene.</o>
       <o>Down I go, I will have the scene secure for the crew.</o>
+    </message>
+    <message key="HRS.START.G" actor="12" radio="on" group="hrs" seq="1" new="1" trigger="skid landing: the heli rescuer leaves the cabin on foot to secure the area (no hoist)">
+      <o>Heli rescuer out of the cabin, I walk the area to secure it.</o>
+      <o>Heli rescuer on the ground, I check the area on foot.</o>
+      <o>Out of the helicopter. I will walk the scene and secure it.</o>
+      <o>Leaving the skid now, I secure the area first.</o>
+      <o>Heli rescuer out. I take care of the scene while you hold the position.</o>
+      <o>On foot, I will have the scene secure for the crew.</o>
     </message>
     <message key="HRS.MID" actor="12" radio="on" group="hrs" seq="2" new="1" trigger="the heli rescuer is half way down">
       <o>Half way down, the area looks clear.</o>
