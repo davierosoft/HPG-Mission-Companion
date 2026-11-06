@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HPG Mission Companion voice pack EN. Edit the texts freely; raise version="" at every change (see docs/architecture/VOICEPACKS.md). -->
-<voicepack name="EN" language="EN" version="36" vcp="APP" title="English crew voices of the HEMS missions">
+<voicepack name="EN" language="EN" version="38" vcp="APP" title="English crew voices of the HEMS missions">
   <names>
     <name role="PLT">Pilot</name>
     <name role="CPL">Copilot</name>
@@ -6574,6 +6574,270 @@
       <o>Heli rescuer waiting. Raise the collective and keep it there.</o>
       <o>Keep the collective up, pilot. I board right after.</o>
       <o>Pilot, collective up please, then I get in.</o>
+    </message>
+    <message key="APR.WND" actor="2" radio="auto" group="aprwnd" seq="1" new="1" trigger="one nautical mile from the accident: the copilot reads the wind at the site (arguments 0 = wind direction, 1 = wind knots)">
+      <o>Wind at the site: from {0} degrees at {1} knots.</o>
+      <o>Site wind {0} degrees, {1} knots.</o>
+      <o>Wind on scene is {0} degrees at {1} knots.</o>
+      <o>Wind on site: {0} degrees, {1} knots.</o>
+      <o>Winds at the scene {0} at {1}.</o>
+      <o>Got the wind: {0} degrees, {1} knots.</o>
+    </message>
+    <message key="APR.WND.C" actor="2" radio="auto" group="aprwnd" seq="1" new="1" trigger="one nautical mile from the accident: the copilot says that the wind at the site is calm (wind under 5 knots)">
+      <o>The wind at the site is calm.</o>
+      <o>Calm wind on scene.</o>
+      <o>No wind to speak of at the site.</o>
+      <o>Wind is calm at the site.</o>
+      <o>Basically no wind on scene.</o>
+      <o>Wind is nothing at the site.</o>
+    </message>
+    <message key="FUEL.LOW" actor="2" radio="auto" group="fuel" seq="1" new="1" trigger="in flight during a mission: the fuel falls to the limit of the mission option LOWFUELTHRSLD (argument 0 = fuel percent), once for each dispatch">
+      <o>Fuel is at {0} percent, under our limit.</o>
+      <o>We are at {0} percent fuel, below our limit.</o>
+      <o>Fuel {0} percent. We are under the limit.</o>
+      <o>Fuel is {0} percent, we are below the limit.</o>
+      <o>{0} percent fuel left, that is under our limit.</o>
+      <o>Only {0} percent fuel, we are under the limit.</o>
+    </message>
+    <message key="FUEL.MIN" actor="2" radio="auto" group="fuel" seq="2" new="1" trigger="in flight during a mission: the fuel falls to half of the limit of the mission option LOWFUELTHRSLD (argument 0 = fuel percent), once for each dispatch">
+      <o>Fuel at {0} percent. Time to think about the way back.</o>
+      <o>We are down to {0} percent fuel. Let us plan the return.</o>
+      <o>Fuel {0} percent. Keep an eye on the return.</o>
+      <o>Fuel {0} percent. Let us think about the return.</o>
+      <o>{0} percent fuel left. Time to head back soon.</o>
+      <o>We are at {0} percent fuel. We should plan the way home.</o>
+    </message>
+    <message key="HOS.HND.M.S" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a man, stable (Life Score 60 or more) (argument 0 = age)">
+      <o>Male patient, {0} years old. Stable, assessed and treated on scene, vital signs steady all the way.</o>
+      <o>Man, {0}. Stable after the treatment on scene, nothing changed on the flight.</o>
+      <o>{0} year old male, stable. Treated on scene, steady during the transport.</o>
+      <o>Male patient, {0}. Stable, treated on scene, steady all along.</o>
+      <o>Man, {0}, stable. Treated on scene, no change during the flight.</o>
+      <o>{0} years old, male, stable. Nothing changed since we treated him.</o>
+    </message>
+    <message key="HOS.HND.M.M" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a man, serious (30 to 59) (argument 0 = age)">
+      <o>Male patient, {0} years old. Serious, treated on scene and stabilised for the transport, we kept a close watch on him.</o>
+      <o>Man, {0}. Serious condition, treated and stabilised, he held on during the flight.</o>
+      <o>{0} year old male in a serious condition. Stabilised on scene, monitored all the way.</o>
+      <o>Male patient, {0}. Serious but stabilised, watched closely all the way.</o>
+      <o>Man, {0}, serious. Stabilised on scene, he held steady during the flight.</o>
+      <o>{0} year old man, serious. Treated and stable enough for the transfer, watched all the way.</o>
+    </message>
+    <message key="HOS.HND.M.C" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a man, critical (under 30) (argument 0 = age)">
+      <o>Male patient, {0} years old. Critical, stabilised on scene and monitored all the way, he needs you at once.</o>
+      <o>Man, {0}. Critical condition, treated on scene and kept under watch, he needs immediate care.</o>
+      <o>{0} year old male, critical. Stabilised as far as we could, he needs immediate care.</o>
+      <o>Male patient, {0}. Critical, stabilised and monitored, he needs care now.</o>
+      <o>Man, {0}, critical. We did what we could on scene, he needs you right now.</o>
+      <o>{0} year old man, critical. Kept under watch all the way, immediate care please.</o>
+    </message>
+    <message key="HOS.HND.F.S" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a woman, stable (Life Score 60 or more) (argument 0 = age)">
+      <o>Female patient, {0} years old. Stable, assessed and treated on scene, vital signs steady all the way.</o>
+      <o>Woman, {0}. Stable after the treatment on scene, nothing changed on the flight.</o>
+      <o>{0} year old female, stable. Treated on scene, steady during the transport.</o>
+      <o>Female patient, {0}. Stable, treated on scene, steady all along.</o>
+      <o>Woman, {0}, stable. Treated on scene, no change during the flight.</o>
+      <o>{0} years old, female, stable. Nothing changed since we treated her.</o>
+    </message>
+    <message key="HOS.HND.F.M" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a woman, serious (30 to 59) (argument 0 = age)">
+      <o>Female patient, {0} years old. Serious, treated on scene and stabilised for the transport, we kept a close watch on her.</o>
+      <o>Woman, {0}. Serious condition, treated and stabilised, she held on during the flight.</o>
+      <o>{0} year old female in a serious condition. Stabilised on scene, monitored all the way.</o>
+      <o>Female patient, {0}. Serious but stabilised, watched closely all the way.</o>
+      <o>Woman, {0}, serious. Stabilised on scene, she held steady during the flight.</o>
+      <o>{0} year old woman, serious. Treated and stable enough for the transfer, watched all the way.</o>
+    </message>
+    <message key="HOS.HND.F.C" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a woman, critical (under 30) (argument 0 = age)">
+      <o>Female patient, {0} years old. Critical, stabilised on scene and monitored all the way, she needs you at once.</o>
+      <o>Woman, {0}. Critical condition, treated on scene and kept under watch, she needs immediate care.</o>
+      <o>{0} year old female, critical. Stabilised as far as we could, she needs immediate care.</o>
+      <o>Female patient, {0}. Critical, stabilised and monitored, she needs care now.</o>
+      <o>Woman, {0}, critical. We did what we could on scene, she needs you right now.</o>
+      <o>{0} year old woman, critical. Kept under watch all the way, immediate care please.</o>
+    </message>
+    <message key="HOS.HND.U.S" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: sex or age unknown, stable (Life Score 60 or more)">
+      <o>One patient, stable. Assessed and treated on scene, vital signs steady all the way.</o>
+      <o>Stable patient, treated on scene, nothing changed on the flight.</o>
+      <o>The patient is stable. Treated on scene, steady during the transport.</o>
+      <o>One patient, stable. Treated on scene, steady all along.</o>
+      <o>Stable patient. Treated on scene, no change during the flight.</o>
+      <o>The patient is stable, nothing changed since the treatment on scene.</o>
+    </message>
+    <message key="HOS.HND.U.M" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: sex or age unknown, serious (30 to 59)">
+      <o>One patient, serious. Treated on scene and stabilised for the transport, monitored all the way.</o>
+      <o>Serious condition, treated and stabilised, the patient held on during the flight.</o>
+      <o>The patient is in a serious condition. Stabilised on scene, monitored all the way.</o>
+      <o>One patient, serious but stabilised, watched all the way.</o>
+      <o>Serious patient, stabilised on scene, held steady during the flight.</o>
+      <o>Serious condition. Treated and stable enough for the transfer, monitored all the way.</o>
+    </message>
+    <message key="HOS.HND.U.C" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: sex or age unknown, critical (under 30)">
+      <o>One patient, critical. Stabilised on scene and monitored all the way, the patient needs you at once.</o>
+      <o>Critical condition, treated on scene and kept under watch, immediate care needed.</o>
+      <o>The patient is critical. Stabilised as far as we could, immediate care needed.</o>
+      <o>One patient, critical. Stabilised and monitored, needs care now.</o>
+      <o>Critical patient. We did what we could on scene, immediate care please.</o>
+      <o>The patient is critical, kept under watch all the way, needs you right now.</o>
+    </message>
+    <message key="APR.ORB" actor="2" radio="auto" group="aprorb" seq="1" new="1" trigger="the pilot has flown one orbit (about 330 degrees of heading change) within 0.6 NM of the accident below 1500 ft: the copilot says that the orbit is completed (no finding is claimed)">
+      <o>Orbit completed. Ready for the approach.</o>
+      <o>Orbit done. We can set up the approach.</o>
+      <o>One orbit completed, going for the approach.</o>
+      <o>Orbit completed, setting up the approach.</o>
+      <o>That is the orbit done. Approach next.</o>
+      <o>Orbit is done, let us go for the approach.</o>
+    </message>
+    <message key="TRI.R" actor="3" radio="auto" group="tri" seq="2" new="1" trigger="hoist and skid operations, more than one patient: the doctor gives the triage category of the patient just visited (red, immediate; argument 0 = patient number)">
+      <o>Patient {0}: red, immediate.</o>
+      <o>Patient {0} is red. Immediate priority.</o>
+      <o>Red for patient {0}. He goes first.</o>
+      <o>Red for patient {0}, immediate.</o>
+      <o>Patient {0} is red, he goes first.</o>
+      <o>Patient {0}, red. Immediate.</o>
+    </message>
+    <message key="TRI.Y" actor="3" radio="auto" group="tri" seq="2" new="1" trigger="hoist and skid operations, more than one patient: the doctor gives the triage category of the patient just visited (yellow, urgent; argument 0 = patient number)">
+      <o>Patient {0}: yellow, urgent.</o>
+      <o>Patient {0} is yellow. Urgent, but he can wait for the red.</o>
+      <o>Yellow for patient {0}.</o>
+      <o>Yellow for patient {0}, urgent.</o>
+      <o>Patient {0} is yellow. Urgent.</o>
+      <o>Patient {0}, yellow. After the red.</o>
+    </message>
+    <message key="TRI.G" actor="3" radio="auto" group="tri" seq="2" new="1" trigger="hoist and skid operations, more than one patient: the doctor gives the triage category of the patient just visited (green, delayed; argument 0 = patient number)">
+      <o>Patient {0}: green, delayed.</o>
+      <o>Patient {0} is green. He can wait.</o>
+      <o>Green for patient {0}, minor.</o>
+      <o>Green for patient {0}, delayed.</o>
+      <o>Patient {0} is green, minor.</o>
+      <o>Patient {0}, green. He can wait.</o>
+    </message>
+    <message key="HCL.DOWN" actor="4" radio="auto" group="hcl" seq="1" new="1" trigger="hoist cable: a person rides the hook down (hoist operator of the crew; the heli rescuer has HRS.*)">
+      <o>Going down. The hook is clear below.</o>
+      <o>Lowering now. Hook is clear.</o>
+      <o>Lowering. I am watching the hook.</o>
+      <o>Lowering the hook. It is clear below.</o>
+      <o>Going down, hook clear.</o>
+      <o>Hook going down. I have it in sight.</o>
+    </message>
+    <message key="HCL.GND" actor="4" radio="auto" group="hcl" seq="2" new="1" trigger="hoist cable: the hook reaches the ground">
+      <o>Hook on the ground.</o>
+      <o>Hook is down. Free on the ground.</o>
+      <o>On the ground. The hook is slack.</o>
+      <o>Hook is on the ground.</o>
+      <o>The hook has landed. It is free.</o>
+      <o>Ground contact. The cable is slack.</o>
+    </message>
+    <message key="HCL.UP" actor="4" radio="auto" group="hcl" seq="3" new="1" trigger="hoist cable: the hook is loaded (person, patient) and goes up">
+      <o>Hooked and clear. Lifting slowly.</o>
+      <o>All clear, lifting.</o>
+      <o>Hook is loaded. Taking up slowly.</o>
+      <o>Hook is loaded and clear. Lifting slowly.</o>
+      <o>Everything clear, taking up.</o>
+      <o>Loaded. Lifting, easy.</o>
+    </message>
+    <message key="HCL.DOOR" actor="4" radio="auto" group="hcl" seq="4" new="1" trigger="hoist cable: the hook is close to the door on the way up">
+      <o>Coming up to the door. Slow.</o>
+      <o>At the door, bringing them in.</o>
+      <o>Almost at the door. Easy.</o>
+      <o>Coming up to the door, slowly.</o>
+      <o>Nearly at the door. Bringing them in.</o>
+      <o>At the door. Easy now.</o>
+    </message>
+    <message key="HCL.H" actor="4" radio="auto" group="hclh" seq="1" new="1" trigger="hoist cable: the hook is on its way down and the height of the hook above the ground is called (argument 0 = feet, rounded to 5; between 4 and 45 feet; not for the heli rescuer)">
+      <o>Hook {0} feet.</o>
+      <o>{0} feet to the ground. Easy.</o>
+      <o>Hook at {0} feet, still coming down.</o>
+      <o>Hook at {0} feet.</o>
+      <o>{0} feet to go. Easy.</o>
+      <o>{0} feet above the ground, still coming down.</o>
+    </message>
+    <message key="HPC.Q" actor="4" radio="auto" group="hpc" seq="1" new="1" trigger="hoist pre-check: the hoist arm is out and the hoist is on, the hoist operator tells the pilot that the hook and the cable are free (once for each hoist operation)">
+      <o>Hoist armed, the arm is out. Hook and cable are free. Ready on the hoist.</o>
+      <o>Arm is out and the hook is free. Hoist is ready, pilot.</o>
+      <o>Hoist is on, hook and cable are clear. Ready when you are.</o>
+      <o>Hoist is armed and the arm is out. Cable and hook are clear. Ready.</o>
+      <o>Arm out, hook free. The hoist is ready, pilot.</o>
+      <o>Hoist on, hook and cable free. Ready when you are, pilot.</o>
+    </message>
+    <message key="HPC.A" actor="1" radio="auto" group="hpc" seq="2" new="1" trigger="hoist pre-check: the pilot answers that he holds the hover">
+      <o>Pilot ready. Holding the hover, you have the hoist.</o>
+      <o>Copy. The hover is stable, you can start.</o>
+      <o>Ready. Hovering, go ahead with the hoist.</o>
+      <o>Pilot ready. Hover is steady, you have the hoist.</o>
+      <o>Copy. Stable hover, you can go ahead.</o>
+      <o>Ready here. Holding the hover, start the hoist.</o>
+    </message>
+    <message key="DBF.DEAD" actor="3" radio="auto" group="dbf" seq="1" new="1" trigger="debrief at the base: a patient died during the dispatch">
+      <o>We lost a patient on this call. We will go through it together.</o>
+      <o>A patient did not make it today. Let us talk it through.</o>
+      <o>We lost someone on this one. It stays with us, let us review it.</o>
+      <o>We lost a patient on this call. Let us go over it together.</o>
+      <o>A patient did not survive this call. We review it together.</o>
+      <o>We lost someone today. Let us talk about it.</o>
+    </message>
+    <message key="DBF.HARD" actor="2" radio="auto" group="dbf" seq="2" new="1" trigger="debrief at the base: a hard landing happened during the dispatch">
+      <o>The hard landing: we check the helicopter before the next call.</o>
+      <o>That hard landing goes in the log. Airframe check next.</o>
+      <o>One hard landing today. Let us look at the aircraft first.</o>
+      <o>That hard landing goes in the log. We check the aircraft before the next call.</o>
+      <o>One hard landing today. Airframe check first.</o>
+      <o>Hard landing noted. The helicopter gets checked before we fly again.</o>
+    </message>
+    <message key="DBF.FAIL" actor="2" radio="auto" group="dbf" seq="3" new="1" trigger="debrief at the base: an aircraft failure or the fuel leak happened during the dispatch">
+      <o>We had a failure on the way. It goes in the log.</o>
+      <o>The failure in flight: we note it and report it to the technicians.</o>
+      <o>A failure during the flight. Technicians should look at it.</o>
+      <o>We had a failure in flight. It goes in the log.</o>
+      <o>A failure on this flight. The technicians must look at it.</o>
+      <o>There was a failure on the way. We report it.</o>
+    </message>
+    <message key="DBF.WAIT" actor="1" radio="auto" group="dbf" seq="4" new="1" trigger="debrief at the base: the on-site operations were 120 s or more without progress">
+      <o>The long wait on scene cost us time. Next time we chase it earlier.</o>
+      <o>We waited too long on scene. We keep an eye on it next time.</o>
+      <o>Too much waiting on scene today. Let us see what held us.</o>
+      <o>The long wait on scene cost us time. We chase it earlier next time.</o>
+      <o>We waited a lot on scene today. Let us see what held us up.</o>
+      <o>Too long on scene waiting. Next time we push earlier.</o>
+    </message>
+    <message key="DBF.OK" actor="1" radio="auto" group="dbf" seq="5" new="1" trigger="debrief at the base: no event during the dispatch and a good outcome (LIFESCORE above 3)">
+      <o>No events to report. Clean job, well done.</o>
+      <o>Nothing to report from this one. Good work, all.</o>
+      <o>Clean call, no events. Well done, team.</o>
+      <o>No events to report. Clean call, well done.</o>
+      <o>Nothing to report. Good work, everybody.</o>
+      <o>A clean job with no events. Well done, team.</o>
+    </message>
+    <message key="HOS.DST.ETA" actor="2" radio="auto" group="hosdst" seq="1" new="1" trigger="the proposed hospital is found: the copilot gives the minutes of flight from the scene to the hospital (argument 0 = minutes, 2 to 60, at 120 kt)">
+      <o>That is about {0} minutes of flight from the scene.</o>
+      <o>From the scene it is about {0} minutes by air.</o>
+      <o>About {0} minutes to fly from the scene to there.</o>
+      <o>It is about {0} minutes of flight from the scene.</o>
+      <o>About {0} minutes by air from the scene.</o>
+      <o>{0} minutes of flight or so from the scene.</o>
+    </message>
+    <message key="HOS.DST.S" actor="3" radio="auto" group="hosdst" seq="2" new="1" trigger="the doctor answers to a flight of up to 8 minutes to the proposed hospital (confirmed after the assessment of the patient)">
+      <o>Short flight, that suits us. We confirm after we see the patient.</o>
+      <o>A short transport, good. We decide for sure after the assessment.</o>
+      <o>Close enough. We confirm it once we have assessed the patient.</o>
+      <o>Short flight, good for us. We confirm after the assessment.</o>
+      <o>Close, that works. We confirm once the patient is assessed.</o>
+      <o>A short transport suits us. We decide after we see the patient.</o>
+    </message>
+    <message key="HOS.DST.M" actor="3" radio="auto" group="hosdst" seq="2" new="1" trigger="the doctor answers to a flight of 9 to 19 minutes to the proposed hospital">
+      <o>Fine for now. We confirm the destination after we assess the patient.</o>
+      <o>Acceptable. We will confirm or change it after the assessment.</o>
+      <o>That works for now. The patient decides, we confirm later.</o>
+      <o>That is fine for now. We confirm after assessing the patient.</o>
+      <o>Acceptable. We confirm or change it after the assessment.</o>
+      <o>It works for now. We decide after we see the patient.</o>
+    </message>
+    <message key="HOS.DST.L" actor="3" radio="auto" group="hosdst" seq="2" new="1" trigger="the doctor answers to a flight of 20 minutes or more to the proposed hospital (checked again after the assessment)">
+      <o>A long flight. We look at the destination again after the assessment of the patient.</o>
+      <o>That is far. After the assessment we check whether it is still the right choice.</o>
+      <o>Long transport. We decide for sure when we have seen the patient.</o>
+      <o>That is a long flight. We check the destination again after the assessment.</o>
+      <o>Far away. After the assessment we see if it is still the right choice.</o>
+      <o>A long transport. We decide for good after assessing the patient.</o>
     </message>
     <message key="HRD.PLT" actor="1" radio="auto" group="hrd" seq="1" new="1" trigger="the heli rescuers have left the helicopter: the pilot thanks them">
       <o>Thank you for the help. Take care.</o>

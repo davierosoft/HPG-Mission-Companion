@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- HPG Mission Companion voice pack FR. Edit the texts freely; raise version="" at every change (see docs/architecture/VOICEPACKS.md). -->
-<voicepack name="FR" language="FR" version="25" vcp="APP" title="Voix françaises de l'équipage des missions HEMS" basever="36">
+<voicepack name="FR" language="FR" version="27" vcp="APP" title="Voix françaises de l'équipage des missions HEMS" basever="37">
   <names>
     <name role="PLT">Pilote</name>
     <name role="CPL">Copilote</name>
@@ -6574,6 +6574,270 @@
       <o>Le secouriste héliporté attend. Levez le collectif et gardez-le en place.</o>
       <o>Gardez le collectif levé, pilote. J'embarque juste après.</o>
       <o>Pilote, collectif levé, s'il vous plaît, et je monte.</o>
+    </message>
+    <message key="APR.WND" actor="2" radio="auto" group="aprwnd" seq="1" new="1" trigger="one nautical mile from the accident: the copilot reads the wind at the site (arguments 0 = wind direction, 1 = wind knots)">
+      <o>Vent sur site : du {0} degrés pour {1} noeuds.</o>
+      <o>Vent sur place {0} degrés, {1} noeuds.</o>
+      <o>Le vent sur place est du {0} degrés pour {1} noeuds.</o>
+      <o>Vent sur site : {0} degrés, {1} noeuds.</o>
+      <o>Vent sur les lieux du {0} degrés pour {1} noeuds.</o>
+      <o>J'ai le vent : {0} degrés, {1} noeuds.</o>
+    </message>
+    <message key="APR.WND.C" actor="2" radio="auto" group="aprwnd" seq="1" new="1" trigger="one nautical mile from the accident: the copilot says that the wind at the site is calm (wind under 5 knots)">
+      <o>Le vent sur site est calme.</o>
+      <o>Vent calme sur place.</o>
+      <o>Pratiquement pas de vent sur site.</o>
+      <o>Le vent est calme sur site.</o>
+      <o>Pratiquement pas de vent sur place.</o>
+      <o>Le vent sur site est négligeable.</o>
+    </message>
+    <message key="FUEL.LOW" actor="2" radio="auto" group="fuel" seq="1" new="1" trigger="in flight during a mission: the fuel falls to the limit of the mission option LOWFUELTHRSLD (argument 0 = fuel percent), once for each dispatch">
+      <o>Carburant à {0} pour cent, sous notre limite.</o>
+      <o>Nous sommes à {0} pour cent de carburant, sous la limite.</o>
+      <o>Carburant {0} pour cent. Nous sommes sous le seuil.</o>
+      <o>Carburant {0} pour cent, nous sommes sous la limite.</o>
+      <o>Il ne reste que {0} pour cent de carburant, sous notre limite.</o>
+      <o>{0} pour cent de carburant, c'est sous le seuil.</o>
+    </message>
+    <message key="FUEL.MIN" actor="2" radio="auto" group="fuel" seq="2" new="1" trigger="in flight during a mission: the fuel falls to half of the limit of the mission option LOWFUELTHRSLD (argument 0 = fuel percent), once for each dispatch">
+      <o>Carburant à {0} pour cent. Il est temps de penser au retour.</o>
+      <o>Plus que {0} pour cent de carburant. Préparons le retour.</o>
+      <o>Carburant {0} pour cent. Gardez le retour à l'oeil.</o>
+      <o>Carburant {0} pour cent. Pensons au retour.</o>
+      <o>Il reste {0} pour cent de carburant. Il faudra bientôt rentrer.</o>
+      <o>Nous sommes à {0} pour cent. Préparons le chemin du retour.</o>
+    </message>
+    <message key="HOS.HND.M.S" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a man, stable (Life Score 60 or more) (argument 0 = age)">
+      <o>Patient de sexe masculin, {0} ans. Stable, examiné et traité sur place, constantes stables tout le long.</o>
+      <o>Homme, {0} ans. Stable après le traitement sur place, rien n'a changé pendant le vol.</o>
+      <o>Homme de {0} ans, stable. Traité sur place, stable pendant le transport.</o>
+      <o>Patient de sexe masculin, {0} ans. Stable, traité sur place, constantes inchangées tout le long.</o>
+      <o>Homme, {0} ans, stable. Traité sur place, aucun changement pendant le vol.</o>
+      <o>Homme de {0} ans, stable. Rien n'a changé depuis le traitement sur place.</o>
+    </message>
+    <message key="HOS.HND.M.M" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a man, serious (30 to 59) (argument 0 = age)">
+      <o>Patient de sexe masculin, {0} ans. État sérieux, traité sur place et stabilisé pour le transport, nous l'avons surveillé de près.</o>
+      <o>Homme, {0} ans. État sérieux, traité et stabilisé, il a tenu pendant le vol.</o>
+      <o>Homme de {0} ans en état sérieux. Stabilisé sur place, surveillé tout le long.</o>
+      <o>Patient de sexe masculin, {0} ans. Sérieux mais stabilisé, surveillé de près tout le long.</o>
+      <o>Homme, {0} ans, état sérieux. Stabilisé sur place, il a tenu pendant le vol.</o>
+      <o>Homme de {0} ans, sérieux. Traité et assez stable pour le transfert, surveillé tout le long.</o>
+    </message>
+    <message key="HOS.HND.M.C" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a man, critical (under 30) (argument 0 = age)">
+      <o>Patient de sexe masculin, {0} ans. Critique, stabilisé sur place et surveillé tout le long, il a besoin de vous tout de suite.</o>
+      <o>Homme, {0} ans. État critique, traité sur place et sous surveillance, il a besoin de soins immédiats.</o>
+      <o>Homme de {0} ans, critique. Stabilisé autant que possible, il a besoin de soins immédiats.</o>
+      <o>Patient de sexe masculin, {0} ans. Critique, stabilisé et surveillé, il a besoin de soins maintenant.</o>
+      <o>Homme, {0} ans, critique. Nous avons fait ce que nous pouvions sur place, il a besoin de vous tout de suite.</o>
+      <o>Homme de {0} ans, critique. Sous surveillance tout le long, soins immédiats s'il vous plaît.</o>
+    </message>
+    <message key="HOS.HND.F.S" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a woman, stable (Life Score 60 or more) (argument 0 = age)">
+      <o>Patiente, {0} ans. Stable, examinée et traitée sur place, constantes stables tout le long.</o>
+      <o>Femme, {0} ans. Stable après le traitement sur place, rien n'a changé pendant le vol.</o>
+      <o>Femme de {0} ans, stable. Traitée sur place, stable pendant le transport.</o>
+      <o>Patiente, {0} ans. Stable, traitée sur place, constantes inchangées tout le long.</o>
+      <o>Femme, {0} ans, stable. Traitée sur place, aucun changement pendant le vol.</o>
+      <o>Femme de {0} ans, stable. Rien n'a changé depuis le traitement sur place.</o>
+    </message>
+    <message key="HOS.HND.F.M" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a woman, serious (30 to 59) (argument 0 = age)">
+      <o>Patiente, {0} ans. État sérieux, traitée sur place et stabilisée pour le transport, nous l'avons surveillée de près.</o>
+      <o>Femme, {0} ans. État sérieux, traitée et stabilisée, elle a tenu pendant le vol.</o>
+      <o>Femme de {0} ans en état sérieux. Stabilisée sur place, surveillée tout le long.</o>
+      <o>Patiente, {0} ans. Sérieuse mais stabilisée, surveillée de près tout le long.</o>
+      <o>Femme, {0} ans, état sérieux. Stabilisée sur place, elle a tenu pendant le vol.</o>
+      <o>Femme de {0} ans, sérieuse. Traitée et assez stable pour le transfert, surveillée tout le long.</o>
+    </message>
+    <message key="HOS.HND.F.C" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: a woman, critical (under 30) (argument 0 = age)">
+      <o>Patiente, {0} ans. Critique, stabilisée sur place et surveillée tout le long, elle a besoin de vous tout de suite.</o>
+      <o>Femme, {0} ans. État critique, traitée sur place et sous surveillance, elle a besoin de soins immédiats.</o>
+      <o>Femme de {0} ans, critique. Stabilisée autant que possible, elle a besoin de soins immédiats.</o>
+      <o>Patiente, {0} ans. Critique, stabilisée et surveillée, elle a besoin de soins maintenant.</o>
+      <o>Femme, {0} ans, critique. Nous avons fait ce que nous pouvions sur place, elle a besoin de vous tout de suite.</o>
+      <o>Femme de {0} ans, critique. Sous surveillance tout le long, soins immédiats s'il vous plaît.</o>
+    </message>
+    <message key="HOS.HND.U.S" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: sex or age unknown, stable (Life Score 60 or more)">
+      <o>Un patient, stable. Examiné et traité sur place, constantes stables tout le long.</o>
+      <o>Patient stable, traité sur place, rien n'a changé pendant le vol.</o>
+      <o>Le patient est stable. Traité sur place, stable pendant le transport.</o>
+      <o>Un patient, stable. Traité sur place, constantes inchangées tout le long.</o>
+      <o>Patient stable. Traité sur place, aucun changement pendant le vol.</o>
+      <o>Le patient est stable, rien n'a changé depuis le traitement sur place.</o>
+    </message>
+    <message key="HOS.HND.U.M" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: sex or age unknown, serious (30 to 59)">
+      <o>Un patient, état sérieux. Traité sur place et stabilisé pour le transport, surveillé tout le long.</o>
+      <o>État sérieux, traité et stabilisé, le patient a tenu pendant le vol.</o>
+      <o>Le patient est en état sérieux. Stabilisé sur place, surveillé tout le long.</o>
+      <o>Un patient, sérieux mais stabilisé, surveillé tout le long.</o>
+      <o>Patient sérieux, stabilisé sur place, il a tenu pendant le vol.</o>
+      <o>État sérieux. Traité et assez stable pour le transfert, surveillé tout le long.</o>
+    </message>
+    <message key="HOS.HND.U.C" actor="3" radio="auto" group="hoshnd" seq="2" new="1" trigger="the doctor hands the patient over at the hospital: sex or age unknown, critical (under 30)">
+      <o>Un patient, critique. Stabilisé sur place et surveillé tout le long, il a besoin de vous tout de suite.</o>
+      <o>État critique, traité sur place et sous surveillance, soins immédiats nécessaires.</o>
+      <o>Le patient est critique. Stabilisé autant que possible, soins immédiats nécessaires.</o>
+      <o>Un patient, critique. Stabilisé et surveillé, il a besoin de soins maintenant.</o>
+      <o>Patient critique. Nous avons fait ce que nous pouvions sur place, soins immédiats s'il vous plaît.</o>
+      <o>Le patient est critique, surveillé tout le long, il a besoin de vous tout de suite.</o>
+    </message>
+    <message key="APR.ORB" actor="2" radio="auto" group="aprorb" seq="1" new="1" trigger="the pilot has flown one orbit (about 330 degrees of heading change) within 0.6 NM of the accident below 1500 ft: the copilot says that the orbit is completed (no finding is claimed)">
+      <o>Orbite terminée. Prêts pour l'approche.</o>
+      <o>Orbite faite. Nous pouvons préparer l'approche.</o>
+      <o>Un tour effectué, on passe à l'approche.</o>
+      <o>Orbite terminée, nous préparons l'approche.</o>
+      <o>Voilà l'orbite faite. L'approche ensuite.</o>
+      <o>L'orbite est finie, on passe à l'approche.</o>
+    </message>
+    <message key="TRI.R" actor="3" radio="auto" group="tri" seq="2" new="1" trigger="hoist and skid operations, more than one patient: the doctor gives the triage category of the patient just visited (red, immediate; argument 0 = patient number)">
+      <o>Patient {0} : rouge, immédiat.</o>
+      <o>Le patient {0} est rouge. Priorité immédiate.</o>
+      <o>Rouge pour le patient {0}. Il passe en premier.</o>
+      <o>Rouge pour le patient {0}, immédiat.</o>
+      <o>Le patient {0} est rouge, il passe en premier.</o>
+      <o>Patient {0}, rouge. Immédiat.</o>
+    </message>
+    <message key="TRI.Y" actor="3" radio="auto" group="tri" seq="2" new="1" trigger="hoist and skid operations, more than one patient: the doctor gives the triage category of the patient just visited (yellow, urgent; argument 0 = patient number)">
+      <o>Patient {0} : jaune, urgent.</o>
+      <o>Le patient {0} est jaune. Urgent, mais il peut attendre le rouge.</o>
+      <o>Jaune pour le patient {0}.</o>
+      <o>Jaune pour le patient {0}, urgent.</o>
+      <o>Le patient {0} est jaune. Urgent.</o>
+      <o>Patient {0}, jaune. Après les rouges.</o>
+    </message>
+    <message key="TRI.G" actor="3" radio="auto" group="tri" seq="2" new="1" trigger="hoist and skid operations, more than one patient: the doctor gives the triage category of the patient just visited (green, delayed; argument 0 = patient number)">
+      <o>Patient {0} : vert, différé.</o>
+      <o>Le patient {0} est vert. Il peut attendre.</o>
+      <o>Vert pour le patient {0}, léger.</o>
+      <o>Vert pour le patient {0}, différé.</o>
+      <o>Le patient {0} est vert, léger.</o>
+      <o>Patient {0}, vert. Il peut attendre.</o>
+    </message>
+    <message key="HCL.DOWN" actor="4" radio="auto" group="hcl" seq="1" new="1" trigger="hoist cable: a person rides the hook down (hoist operator of the crew; the heli rescuer has HRS.*)">
+      <o>Je descends. Le crochet est libre en dessous.</o>
+      <o>Je file le câble. Crochet dégagé.</o>
+      <o>Je descends. Je surveille le crochet.</o>
+      <o>Je descends le crochet. C'est dégagé en dessous.</o>
+      <o>Je descends, crochet dégagé.</o>
+      <o>Le crochet descend. Je l'ai en vue.</o>
+    </message>
+    <message key="HCL.GND" actor="4" radio="auto" group="hcl" seq="2" new="1" trigger="hoist cable: the hook reaches the ground">
+      <o>Crochet au sol.</o>
+      <o>Le crochet est au sol. Libre.</o>
+      <o>Au sol. Le câble est mou.</o>
+      <o>Crochet au sol.</o>
+      <o>Le crochet a touché. Il est libre.</o>
+      <o>Contact avec le sol. Le câble est mou.</o>
+    </message>
+    <message key="HCL.UP" actor="4" radio="auto" group="hcl" seq="3" new="1" trigger="hoist cable: the hook is loaded (person, patient) and goes up">
+      <o>Accroché et dégagé. Je remonte doucement.</o>
+      <o>Tout est dégagé, je remonte.</o>
+      <o>Crochet en charge. Je remonte lentement.</o>
+      <o>Crochet en charge et dégagé. Je remonte doucement.</o>
+      <o>Tout est dégagé, je remonte.</o>
+      <o>En charge. Je remonte, doucement.</o>
+    </message>
+    <message key="HCL.DOOR" actor="4" radio="auto" group="hcl" seq="4" new="1" trigger="hoist cable: the hook is close to the door on the way up">
+      <o>On arrive à la porte. Doucement.</o>
+      <o>À la porte, je les rentre.</o>
+      <o>Presque à la porte. Tout doux.</o>
+      <o>J'arrive à la porte, doucement.</o>
+      <o>Presque à la porte. Je les fais entrer.</o>
+      <o>À la porte. Doucement maintenant.</o>
+    </message>
+    <message key="HCL.H" actor="4" radio="auto" group="hclh" seq="1" new="1" trigger="hoist cable: the hook is on its way down and the height of the hook above the ground is called (argument 0 = feet, rounded to 5; between 4 and 45 feet; not for the heli rescuer)">
+      <o>Crochet à {0} pieds.</o>
+      <o>{0} pieds du sol. Doucement.</o>
+      <o>Crochet à {0} pieds, il continue à descendre.</o>
+      <o>Crochet à {0} pieds.</o>
+      <o>Encore {0} pieds. Doucement.</o>
+      <o>{0} pieds au-dessus du sol, il continue à descendre.</o>
+    </message>
+    <message key="HPC.Q" actor="4" radio="auto" group="hpc" seq="1" new="1" trigger="hoist pre-check: the hoist arm is out and the hoist is on, the hoist operator tells the pilot that the hook and the cable are free (once for each hoist operation)">
+      <o>Treuil armé, le bras est sorti. Crochet et câble dégagés. Prêt au treuil.</o>
+      <o>Le bras est sorti et le crochet est libre. Treuil prêt, pilote.</o>
+      <o>Treuil en marche, crochet et câble dégagés. Prêt quand tu l'es.</o>
+      <o>Treuil armé et bras sorti. Câble et crochet dégagés. Prêt.</o>
+      <o>Bras sorti, crochet libre. Le treuil est prêt, pilote.</o>
+      <o>Treuil en marche, crochet et câble libres. Prêt quand tu l'es, pilote.</o>
+    </message>
+    <message key="HPC.A" actor="1" radio="auto" group="hpc" seq="2" new="1" trigger="hoist pre-check: the pilot answers that he holds the hover">
+      <o>Pilote prêt. Je tiens le stationnaire, le treuil est à toi.</o>
+      <o>Reçu. Le stationnaire est stable, tu peux commencer.</o>
+      <o>Prêt. Je suis en stationnaire, vas-y avec le treuil.</o>
+      <o>Pilote prêt. Le stationnaire est stable, le treuil est à toi.</o>
+      <o>Reçu. Stationnaire stable, tu peux y aller.</o>
+      <o>Prêt ici. Je tiens le stationnaire, lance le treuil.</o>
+    </message>
+    <message key="DBF.DEAD" actor="3" radio="auto" group="dbf" seq="1" new="1" trigger="debrief at the base: a patient died during the dispatch">
+      <o>Nous avons perdu un patient pendant cette mission. Nous en parlons ensemble.</o>
+      <o>Un patient n'a pas survécu aujourd'hui. Reprenons cela ensemble.</o>
+      <o>Nous avons perdu quelqu'un sur cette mission. Cela reste avec nous, faisons le point.</o>
+      <o>Nous avons perdu un patient pendant cette mission. Passons-la en revue ensemble.</o>
+      <o>Un patient n'a pas survécu à cette mission. Nous la reprenons ensemble.</o>
+      <o>Nous avons perdu quelqu'un aujourd'hui. Parlons-en.</o>
+    </message>
+    <message key="DBF.HARD" actor="2" radio="auto" group="dbf" seq="2" new="1" trigger="debrief at the base: a hard landing happened during the dispatch">
+      <o>L'atterrissage dur : nous vérifions l'hélicoptère avant la prochaine mission.</o>
+      <o>Cet atterrissage dur va dans le carnet. Contrôle de la cellule ensuite.</o>
+      <o>Un atterrissage dur aujourd'hui. Regardons d'abord l'appareil.</o>
+      <o>Cet atterrissage dur va dans le carnet. Nous contrôlons l'hélicoptère avant la prochaine mission.</o>
+      <o>Un atterrissage dur aujourd'hui. Contrôle de la cellule d'abord.</o>
+      <o>Atterrissage dur noté. L'hélicoptère est contrôlé avant de revoler.</o>
+    </message>
+    <message key="DBF.FAIL" actor="2" radio="auto" group="dbf" seq="3" new="1" trigger="debrief at the base: an aircraft failure or the fuel leak happened during the dispatch">
+      <o>Nous avons eu une panne en route. Elle va dans le carnet.</o>
+      <o>La panne en vol : nous la notons et la signalons aux techniciens.</o>
+      <o>Une panne pendant le vol. Les techniciens devraient la regarder.</o>
+      <o>Nous avons eu une panne en vol. Elle va dans le carnet.</o>
+      <o>Une panne pendant ce vol. Les techniciens doivent la regarder.</o>
+      <o>Il y a eu une panne en route. Nous la signalons.</o>
+    </message>
+    <message key="DBF.WAIT" actor="1" radio="auto" group="dbf" seq="4" new="1" trigger="debrief at the base: the on-site operations were 120 s or more without progress">
+      <o>La longue attente sur place nous a coûté du temps. La prochaine fois, nous relançons plus tôt.</o>
+      <o>Nous avons trop attendu sur place. Nous y ferons attention la prochaine fois.</o>
+      <o>Trop d'attente sur place aujourd'hui. Voyons ce qui nous a retenus.</o>
+      <o>La longue attente sur place nous a coûté du temps. La prochaine fois, nous poussons plus tôt.</o>
+      <o>Nous avons beaucoup attendu sur place aujourd'hui. Voyons ce qui nous a retardés.</o>
+      <o>Trop longtemps à attendre sur place. La prochaine fois, nous relançons plus tôt.</o>
+    </message>
+    <message key="DBF.OK" actor="1" radio="auto" group="dbf" seq="5" new="1" trigger="debrief at the base: no event during the dispatch and a good outcome (LIFESCORE above 3)">
+      <o>Rien à signaler. Travail propre, bien joué.</o>
+      <o>Rien à signaler pour cette mission. Bon travail à tous.</o>
+      <o>Mission propre, aucun événement. Bien joué, l'équipe.</o>
+      <o>Aucun événement à signaler. Mission propre, bien joué.</o>
+      <o>Rien à signaler. Bon travail, tout le monde.</o>
+      <o>Une mission propre, sans événement. Bravo à l'équipe.</o>
+    </message>
+    <message key="HOS.DST.ETA" actor="2" radio="auto" group="hosdst" seq="1" new="1" trigger="the proposed hospital is found: the copilot gives the minutes of flight from the scene to the hospital (argument 0 = minutes, 2 to 60, at 120 kt)">
+      <o>Cela fait environ {0} minutes de vol depuis le lieu d'intervention.</o>
+      <o>Depuis le lieu, c'est environ {0} minutes par les airs.</o>
+      <o>Environ {0} minutes de vol du lieu jusque-là.</o>
+      <o>C'est environ {0} minutes de vol depuis le lieu d'intervention.</o>
+      <o>Environ {0} minutes par les airs depuis le lieu.</o>
+      <o>À peu près {0} minutes de vol depuis le lieu d'intervention.</o>
+    </message>
+    <message key="HOS.DST.S" actor="3" radio="auto" group="hosdst" seq="2" new="1" trigger="the doctor answers to a flight of up to 8 minutes to the proposed hospital (confirmed after the assessment of the patient)">
+      <o>Vol court, cela nous convient. Nous confirmons après avoir vu le patient.</o>
+      <o>Un transport court, bien. Nous décidons pour de bon après l'évaluation.</o>
+      <o>Assez proche. Nous confirmons dès que le patient est évalué.</o>
+      <o>Vol court, cela nous convient. Nous confirmons après l'évaluation.</o>
+      <o>Proche, cela marche. Nous confirmons une fois le patient évalué.</o>
+      <o>Un transport court nous va. Nous décidons après avoir vu le patient.</o>
+    </message>
+    <message key="HOS.DST.M" actor="3" radio="auto" group="hosdst" seq="2" new="1" trigger="the doctor answers to a flight of 9 to 19 minutes to the proposed hospital">
+      <o>Cela va pour l'instant. Nous confirmons la destination après l'évaluation du patient.</o>
+      <o>Acceptable. Nous confirmerons ou changerons après l'évaluation.</o>
+      <o>Cela convient pour l'instant. Le patient décide, nous confirmons plus tard.</o>
+      <o>C'est bon pour l'instant. Nous confirmons après l'évaluation du patient.</o>
+      <o>Acceptable. Nous confirmons ou changeons après l'évaluation.</o>
+      <o>Cela marche pour l'instant. Nous décidons après avoir vu le patient.</o>
+    </message>
+    <message key="HOS.DST.L" actor="3" radio="auto" group="hosdst" seq="2" new="1" trigger="the doctor answers to a flight of 20 minutes or more to the proposed hospital (checked again after the assessment)">
+      <o>Un long vol. Nous revoyons la destination après l'évaluation du patient.</o>
+      <o>C'est loin. Après l'évaluation, nous vérifions si c'est toujours le bon choix.</o>
+      <o>Long transport. Nous décidons pour de bon quand nous aurons vu le patient.</o>
+      <o>C'est un long vol. Nous revoyons la destination après l'évaluation.</o>
+      <o>C'est loin. Après l'évaluation, nous verrons si c'est toujours le bon choix.</o>
+      <o>Un long transport. Nous décidons pour de bon après avoir évalué le patient.</o>
     </message>
     <message key="HRD.PLT" actor="1" radio="auto" group="hrd" seq="1" new="1" trigger="the heli rescuers have left the helicopter: the pilot thanks them">
       <o>Merci pour l'aide. Prenez soin de vous.</o>
