@@ -1,8 +1,8 @@
 {
-    "sha256": "7101B558D993817C3FBBCEAE7421DACD615160C130E9977063520017B3875D44",
-    "installerSha256": "3EFEE6C41400D7A7A7C10E253832E0CD466CDDF95FA86159ADB70B1B450C9DB9",
-    "deliveredOn": "2026-10-22",
+    "sha256": "1396113CB0B884D7E3C9F9F4A74205A9F79EFE6051FAB12B07BAFB675A4C402E",
+    "installerSha256": "9F8ADC36D7938B34AD29D1B9FDED418ED34268271EE1110435EF86585CFB4D74",
+    "deliveredOn": "2026-11-12",
     "artifact": "HPGMissionCompanion.exe",
-    "lastDeliveredVersion": "0.39",
-    "note": "Release 0.39 (includes 0.38): [pause:N] tag, packs EN 22 and DE 10, log box trimming fix (Windows error sound). Checks: node tools/check.js, --queue-test. Runtime in the simulator pending."
+    "lastDeliveredVersion": "0.40",
+    "note": "Release 0.40 (last version, the program is discontinued): notice at every start with the new Random & Everywhere Companion (uninstall this program and install it, or keep this program and start it), mission and voice pack updates switched off, program update path kept open. Checks: node tools/check.js, --queue-test, --actors-test, the notice and the download/setup helpers tested on a dummy copy. Runtime in the simulator and the full flow on a real installation pending."
 }

@@ -233,8 +233,6 @@ namespace HPGMissionCompanion
         bool sharedRunning;
         bool dbSimSeen;
         DateTime nextSharedSync = DateTime.MaxValue;     // set when the program has started: the first check, then every 30 minutes
-        DateTime nextMissionWatch = DateTime.MaxValue;   // the newest published mission build is read again every 30 minutes (silent: only the variables for the mission)
-        bool missionWatchRunning;
         readonly ComboBox missionCombo = new ComboBox();
         readonly Button updateButton = new Button();
         readonly Label updateInfo = new Label();
@@ -594,21 +592,7 @@ namespace HPGMissionCompanion
                 bool ok = EnsureActors(false);
                 if (ok && wasBlocked && server == null) StartServer(true);
             }
-            if (started && Ctx.Settings.AutoUpdateCheck && DateTime.UtcNow >= nextMissionWatch && !missionWatchRunning && !updateRunning)
-            {
-                nextMissionWatch = DateTime.UtcNow.AddMinutes(30);
-                missionWatchRunning = true;
-                ThreadPool.QueueUserWorkItem(delegate
-                {
-                    try
-                    {
-                        RemoteMission m = Updates.ReadRemoteMissionGitHub(Updates.MissionReleasesApi);
-                        Updates.PublishLatestMission(m.Release);
-                    }
-                    catch (Exception ex) { Ctx.Log("[INFO] Mission watch: the published mission could not be read (" + ex.Message + ")"); }
-                    finally { missionWatchRunning = false; }
-                });
-            }
+            // the program is discontinued (2026-11-12): the published mission is no longer read, so the mission never announces a build that this program cannot install
         }
 
         // the log is dark green; each kind of message has its own colour, voices in yellow
@@ -721,7 +705,7 @@ namespace HPGMissionCompanion
             RefreshTools();
             if (Ctx.Settings.AutoIndex && indexCombo.Items.Count > 0) UpdateIndex(true);
             if (Ctx.Settings.AutoUpdateCheck) CheckUpdates(true);
-            nextMissionWatch = DateTime.UtcNow.AddMinutes(30);
+            AnnounceDiscontinued();
             nextActorCheck = DateTime.UtcNow.AddSeconds(30);
             if (actorsBlocked)
                 Ui(delegate
@@ -2592,9 +2576,9 @@ namespace HPGMissionCompanion
             updatesPage = page;
             tabs.TabPages.Add(page);
 
-            Lbl(page, "The R&&E mission, this program and the voice pack (GitHub releases). The check runs when the program starts (option below) and on the button " +
-                "Check for updates at the bottom of the window, and only reads: nothing is downloaded without the question. A new mission replaces the mission file (the old one is kept beside it, " +
-                "extension .json.bak) and the index is updated; the program is updated last: it closes, the setup installs the new version and starts it again.", 10, 10, 706, 62);
+            Lbl(page, "This program is discontinued and will not be updated any more (2026-11-12). The mission and the voice packs are no longer updated from here; " +
+                "only a newer version of the program itself can still be installed from this tab (check at the start of the program or on the button Check for updates; " +
+                "nothing is downloaded without the question). Use the button The new Companion... to move to its successor.", 10, 10, 706, 62);
 
             GroupBox fileBox = new GroupBox();
             fileBox.Text = "Mission file to update";
@@ -2661,6 +2645,13 @@ namespace HPGMissionCompanion
             updMission.CheckedChanged += scopeChanged;
             updApp.CheckedChanged += scopeChanged;
 
+            missionCombo.Enabled = false;
+            browseMission.Enabled = false;
+            updBoth.Enabled = false; updMission.Enabled = false; updPackCheck.Enabled = false;
+            suppress = true;
+            updApp.Checked = true;      // the only choice left (the check ignores the saved choice)
+            suppress = false;
+            updApp.Enabled = false;
             whatsNewButton.Text = "What's new...";
             whatsNewButton.Location = new Point(10, 256);
             whatsNewButton.Size = new Size(120, 30);
@@ -2672,6 +2663,8 @@ namespace HPGMissionCompanion
             autoUpdateCheck.Location = new Point(144, 262);
             autoUpdateCheck.CheckedChanged += delegate { Ctx.Settings.AutoUpdateCheck = autoUpdateCheck.Checked; MarkDirty(); };
             page.Controls.Add(autoUpdateCheck);
+            Button newCompanionButton = Btn(page, "The new Companion...", 548, 256, 170, 30);
+            newCompanionButton.Click += delegate { ShowDiscontinued(); };
             updateInfo.AutoSize = true;
             updateInfo.Location = new Point(10, 296);
             updateInfo.ForeColor = SystemColors.GrayText;
@@ -2868,6 +2861,43 @@ namespace HPGMissionCompanion
             });
         }
 
+        // ---- the successor (this program is discontinued, user decision of 2026-11-12) ---------------
+        bool discontinuedOpen;
+
+        // at every start: the notice itself when the window is shown, else a message in the corner that opens it
+        void AnnounceDiscontinued()
+        {
+            Ui(delegate
+            {
+                if (Visible) ShowDiscontinued();
+                else UpdatePopup.Announce(AppInfo.Name + ": discontinued", "This program will not be updated any more. Click to choose what to do.", "Open", delegate { ShowWindow(); ShowDiscontinued(); });
+            });
+        }
+
+        void ShowDiscontinued()
+        {
+            if (discontinuedOpen) return;
+            discontinuedOpen = true;
+            try
+            {
+                using (NewCompanionForm f = new NewCompanionForm())
+                {
+                    if (f.ShowDialog(this) != DialogResult.OK) return;
+                    AppendLog("[INFO] New Companion: " + f.NewExe + (f.UninstallThis ? ", this program is uninstalled" : ", this program stays installed"));
+                    try { NewCompanion.StartNew(f.NewExe); }
+                    catch (Exception ex) { MessageBox.Show(this, "The new Companion is installed but could not be started: " + ex.Message + "\n\n" + f.NewExe, Text); }
+                    if (f.UninstallThis)
+                    {
+                        try { NewCompanion.StartUninstallThis(); }
+                        catch (Exception ex) { MessageBox.Show(this, "This program could not be uninstalled: " + ex.Message, Text); }
+                    }
+                    else AppendLog("[INFO] Simulator start entry: " + NewCompanion.AutostartOff());
+                    ExitApp(false);
+                }
+            }
+            finally { discontinuedOpen = false; }
+        }
+
         // ---- updates -----------------------------------------------------------------------------
         // Check for updates (user click only): the installed mission file and the index, the published mission, the published program.
         void CheckUpdates(bool automatic)
@@ -2890,62 +2920,18 @@ namespace HPGMissionCompanion
                 RemoteMission rm = null;
                 RemoteApp ra = null;
                 bool indexKnown = false, indexListsFile = false;
-                try
-                {
-                    copies = Updates.FindInstalled(Tools.CommunityRoots(), chosen);
-                    foreach (MissionCopy c in copies) if (chosen.Length > 0 && string.Equals(c.Path, chosen, StringComparison.OrdinalIgnoreCase)) target = c;
-                    if (target == null && copies.Count > 0 && copies[0].Official) target = copies[0];
-                    lines.Add("R&E mission files found in the Community folders: " + copies.Count);
-                    foreach (MissionCopy c in copies) lines.Add("  " + (c == target ? "> " : "  ") + c);
-                    if (target != null && indexCmd != null)
-                    {
-                        string indexFile = Tools.IndexFileOf(indexCmd);
-                        if (indexFile != null)
-                        {
-                            indexKnown = true;
-                            List<MissionRelease> rel = Updates.ReadIndexReleases(indexFile);
-                            foreach (MissionRelease r in rel) if (r.CompareTo(target.Release) == 0 && r.HasRelease == target.Release.HasRelease) indexListsFile = true;
-                            StringBuilder sb = new StringBuilder();
-                            foreach (MissionRelease r in rel) { if (sb.Length > 0) sb.Append(", "); sb.Append(r.ToString()); }
-                            lines.Add("Mission index " + indexFile + " lists R&E: " + (sb.Length > 0 ? sb.ToString() : "nothing"));
-                        }
-                    }
-                }
-                catch (Exception ex) { lines.Add("[ERROR] reading the installed mission: " + ex.Message); }
-                try
-                {
-                    rm = Updates.ReadRemoteMissionGitHub(Updates.MissionReleasesApi);
-                    Updates.PublishLatestMission(rm.Release);       // the mission shows its own notice when this build is newer than the one it runs
-                    lines.Add("Published mission: " + rm.Release + " (" + rm.Source + ", " + (rm.Size / 1024) + " KB)");
-                }
-                catch (Exception ex) { lines.Add("[ERROR] the published mission could not be read: " + ex.Message); }
+                lines.Add("The mission and the voice packs are no longer updated by this program (discontinued 2026-11-12); only the program itself can still be updated.");
                 try
                 {
                     ra = Updates.ReadRemoteApp(Updates.ReleasesApi);
                     lines.Add("Published program: " + ra.Tag + (ra.AssetUrl == null ? " (no setup file in the release)" : "") + ", this one is " + AppInfo.Version);
                 }
                 catch (Exception ex) { lines.Add("[ERROR] the published program could not be read: " + ex.Message); }
-                List<RemotePack> rpks = new List<RemotePack>();
-                if (Ctx.Settings.UpdatePack)
-                {
-                    foreach (string packName in Updates.PackNames)
-                    {
-                        if (packName != "EN" && VoicePacks.Find(packName) == null) continue;      // EN is the base pack; another pack only when it is installed
-                        try
-                        {
-                            RemotePack one = Updates.ReadRemotePack(Updates.PackApi(packName), Path.Combine(Path.GetTempPath(), "hmc-update"), packName);
-                            if (one == null || one.Info == null) { lines.Add("Voice pack " + packName + ": no pack is published yet."); continue; }
-                            rpks.Add(one);
-                            VoicePack have = VoicePacks.Find(one.Info.Name);
-                            lines.Add("Published voice pack " + one.Info.Name + ": version " + one.Info.Version + " (yours: " + (have != null ? have.Version.ToString() : "not installed") + ")");
-                        }
-                        catch (Exception ex) { lines.Add("[ERROR] the published voice pack " + packName + " could not be read: " + ex.Message); }
-                    }
-                }
+                List<RemotePack> rpks = new List<RemotePack>();       // stays empty: the voice packs are not updated here any more
 
                 bool missionNew = rm != null && target != null && rm.Release.CompareTo(target.Release) > 0;
                 bool appNew = ra != null && ra.AssetUrl != null && Updates.AppIsNewer(ra);
-                string scope = Ctx.Settings.UpdateWhat;          // both | mission | app, chosen in the Updates tab
+                string scope = "app";          // the mission and the voice packs are not updated by this program any more
                 bool doMission = missionNew && scope != "app";
                 bool doApp = appNew && scope != "mission";
                 List<RemotePack> packsNew = new List<RemotePack>();
@@ -2974,8 +2960,8 @@ namespace HPGMissionCompanion
                 if (doApp) whatList.Add("program " + ra.Tag);
                 if (doPack) foreach (RemotePack k in packsNew) whatList.Add("voice pack " + k.Info.Name + " " + k.Info.Version);
                 string newWhat = string.Join(", ", whatList.ToArray());
-                bool allRead = target != null && rm != null && ra != null && !lines.Exists(delegate (string x) { return x.StartsWith("[ERROR]"); });
-                string upToDate = "UP TO DATE: mission " + (target != null && !target.Missing ? target.Release.ToString() : "not found") + ", program " + AppInfo.Version
+                bool allRead = ra != null && !lines.Exists(delegate (string x) { return x.StartsWith("[ERROR]"); });
+                string upToDate = "UP TO DATE: program " + AppInfo.Version
                     + (doPack ? "" : packsKept)
                     + (missionNew && !doMission ? " (a newer mission exists but is not selected)" : "") + (appNew && !doApp ? " (a newer program exists but is not selected)" : "");
 
@@ -3043,13 +3029,6 @@ namespace HPGMissionCompanion
                 try
                 {
                     string label;
-                    string text = Updates.ReadReleaseNotes(Updates.MissionReleasesApi, out label);
-                    n.AppendLine("MISSION " + label + "\n\n" + (text.Length > 0 ? text : "The release has no notes.") + "\n");
-                }
-                catch (Exception ex) { n.AppendLine("MISSION\n\nThe notes of the mission could not be read: " + ex.Message + "\n"); }
-                try
-                {
-                    string label;
                     string text = Updates.ReadReleaseNotes(Updates.ReleasesApi, out label);
                     n.AppendLine("PROGRAM " + label + " (this one is " + AppInfo.Version + ")\n\n" + (text.Length > 0 ? text : "The release has no notes."));
                 }
@@ -3057,7 +3036,7 @@ namespace HPGMissionCompanion
                 Ui(delegate
                 {
                     whatsNewButton.Enabled = true;
-                    NotesForm.View(this, Text + " - what's new", "Release notes of the latest published versions (GitHub).", n.ToString());
+                    NotesForm.View(this, Text + " - what's new", "Release notes of the latest published version of the program (GitHub).", n.ToString());
                 });
             });
         }
